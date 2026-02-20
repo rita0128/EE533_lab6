@@ -1,5 +1,5 @@
 module ALU(
-    input[4: 0] ALU_ctrl,
+    input[4: 0] ALU_Op,
     input [31: 0] A, B,
 
     output reg [31: 0] result, 
@@ -9,7 +9,7 @@ module ALU(
 always @(*) begin
     condition_branch = 0;
     result = 32'b0;
-    case (ALU_ctrl)
+    case (ALU_Op)
         5'b00000: result = A + B;
         5'b00001: result = A - B;
         5'b00010: result = A & B;
