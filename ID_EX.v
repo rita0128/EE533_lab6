@@ -48,7 +48,7 @@ always @(posedge clk) begin
         EX_ALU_Op   <= 5'b00000;
         EX_RF_SRC   <= 1'b0;
         EX_ALU_A    <= 1'b0;
-        EX_ALU_B    <= 2'b01;
+        EX_ALU_B    <= 2'b00;
         EX_REG_WE   <= 1'b0;
         EX_MEM_WE   <= 2'b00;
         EX_MEM_RE   <= 3'b000;
@@ -64,7 +64,6 @@ always @(posedge clk) begin
         EX_rs2      <= 5'b0;
     end 
     else if (!pause) begin
-        // ---------- Normal pipeline latch ----------
         EX_ALU_Op   <= ID_ALU_Op;
         EX_RF_SRC   <= ID_RF_SRC;
         EX_ALU_A    <= ID_ALU_A;
@@ -83,7 +82,6 @@ always @(posedge clk) begin
         EX_rs1      <= ID_rs1;
         EX_rs2      <= ID_rs2;
     end
-    // pause = 1 → hold the previous EX_* values
 end
 
 endmodule
