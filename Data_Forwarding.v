@@ -6,7 +6,7 @@ module Data_Forwarding(
 
     //from EX_MEM
     input [4: 0] ex_rs1, ex_rs2,
-    input [4: 0] me_rs2,
+    input [4: 0] mem_rs2,
 
     // signal for mux
     output reg [1: 0] fwd_a_sel, fwd_b_sel,
@@ -42,5 +42,6 @@ always @(*) begin
         fwd_c_sel = 1'b1;
     end
 end
+
 
 endmodule
