@@ -36,9 +36,6 @@ module EX_MEM(
     output reg [4:0]  MEM_RS2
 );
 
-//==============================================================
-//  EX/MEM Register behavior
-//==============================================================
 always @(posedge clk) begin
     if (rst || flush) begin
         MEM_Thread_ID <= 2'b00;
