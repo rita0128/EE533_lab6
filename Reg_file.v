@@ -1,5 +1,5 @@
 module Reg_file(
-    input rst_n, clk, reg_we,
+    input rst, clk, reg_we,
     input [4: 0] rs1, rs2, rd,
     input [31: 0] rd_data,
 
@@ -46,5 +46,6 @@ always @(*) begin
         end
     end
 end
+
 
 endmodule
