@@ -78,9 +78,6 @@ wire [31: 0] OUT_MEM_WB;
 wire [31: 0] OUT_ALU_WB; 
 wire [31: 0] RD_DATA_WB; 
 wire [4: 0] RD_WB; 
-    // =============================
-    // ==== COMPONENTS START =======
-    // =============================
 
 
     NEXT_PC next_pc(
@@ -95,19 +92,18 @@ wire [4: 0] RD_WB;
 
     PC_ADD_4  pc_add_4(
     .pc(PC_IF),
-
     .pc_4(PC4_IF)
     );
 
     PC pc_unit(
-        .clk(clk),
-        .rst(rst),
+    .clk(clk),
+    .rst(rst),
 	.pause(1'b0),
 	.flush(flush | stall),
-       // .pause(stall),
-        //.flush(flush),
-        .pc_next(NEXT_PC_IF),
-        .pc(PC_IF)
+    // .pause(stall),
+    //.flush(flush),
+    .pc_next(NEXT_PC_IF),
+    .pc(PC_IF)
     );
 
     instruction_mem INSTRUCTION_MEM(
@@ -115,9 +111,6 @@ wire [4: 0] RD_WB;
     .instruction(INST_IF)
     );
 
-
-
-    // -------- IF/ID --------
     IF_ID if_id_reg(
     .clk(clk),
     .rst(rst),
@@ -167,8 +160,6 @@ wire [4: 0] RD_WB;
         .rs2_data(rs2Data_ID)
     );
 
-
-    // -------- Immediate --------
     imm imm_gen(
         .instr(INST_ID),
         .extOP(IMM_TYPE_ID),
@@ -367,3 +358,4 @@ MUX_2 MUX_WB(
     .out(RD_DATA_WB)
 );
 endmodule
+
